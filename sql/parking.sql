@@ -1,0 +1,1 @@
+CREATE TABLE "parking" ( "id" INT NOT NULL IDENTITY(1, 1), "date" DATETIME NOT NULL, "total" INT NOT NULL, "free" INT NOT NULL ); 
