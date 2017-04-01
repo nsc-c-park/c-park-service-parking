@@ -1,45 +1,51 @@
 export function parseConnectionString(connectionString) {
-        // split connection string to key=value pairs
-        var result = {};
-        connectionString.split(';').forEach(function (x) {
-            var arr = x.split('=');
-            arr[1] && (result[arr[0]] = arr[1]);
-        });
-
-        // extract host and port from 'Data Source'
-        var host;
-        var port;
-        var dataSource = result['Data Source'];
-        if (dataSource) {
-            var match;
-            var hostRegex = /.*:(.*),([0-9]+)/;
-            if (match = hostRegex.exec(dataSource)) {
-                host = match[1];
-                port = match[2];
-            }
+    // split connection string to key=value pairs
+    const result = {};
+    connectionString.split(';').forEach((x) => {
+        const arr = x.split('=');
+        if (arr[1]) {
+            result[arr[0]] = arr[1];
         }
+    });
 
-        // extract user from 'User Id' 
-        var user;
-        var userId = result['User Id'];
-        if (userId) {
-            var match;
-            var hostRegex = /(.*)@.*/;
-            if (match = hostRegex.exec(userId)) {
-                user = match[1];
-            }
+    // extract host and port from 'Data Source'
+    let host;
+    let port;
+    const dataSource = result['Data Source'];
+    if (dataSource) {
+        let match;
+        const regex = /.*:(.*),([0-9]+)/;
+        match = regex.exec(dataSource);
+        if (match) {
+            host = match[1];
+            port = match[2];
         }
-
-        return {
-            host: host,
-            user: user,
-            password: result['Password'],
-            options: {
-                port: 1433,
-                database: result['Initial Catalog'],
-                encrypt: true,
-            },
-        };
     }
+
+    // extract user from 'User Id'
+    let user;
+    const userId = result['User Id'];
+    if (userId) {
+        let match;
+        const regex = /(.*)@.*/;
+        match = regex.exec(userId);
+        if (match) {
+            user = match[1];
+        }
+    }
+
+    return {
+        host,
+        options: {
+            database: result['Initial Catalog'],
+            encrypt: true,
+            port: 1433,
+        },
+        /* tslint:disable */
+        password: result['Password'],
+        /* tslint:enable */
+        user,
+    };
+}
 
 export default parseConnectionString;

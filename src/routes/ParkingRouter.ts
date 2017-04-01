@@ -1,9 +1,11 @@
-import { Router, Request, Response, NextFunction } from 'express';
+import * as debug from 'debug';
+import { NextFunction, Request, Response, Router } from 'express';
+import ParkingDb from '../database/ParkingDb';
 
-import ParkingDb from  '../database/ParkingDb';
+const log = debug('app');
 
 export class ParkingRouter {
-    router: Router
+    public router: Router;
 
     constructor() {
         this.router = Router();
@@ -16,14 +18,14 @@ export class ParkingRouter {
     public getCurrentParkingState(req: Request, res: Response, next: NextFunction) {
         ParkingDb
             .fetchAll()
-            .then(function (contacts) {
+            .then((contacts) => {
                 res.json({ contacts });
-            }, function (err) {
-                console.log(err);
+            }, (err) => {
+                log(err);
             });
     }
 
-    init() {
+    public init() {
         this.router.get('/', this.getCurrentParkingState);
     }
 

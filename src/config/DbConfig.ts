@@ -1,24 +1,18 @@
-import * as Knex from 'knex';
 import * as Bookshelf from 'bookshelf';
+import * as Knex from 'knex';
 import parseConnectionString from '../util/parseConnectionString';
 
 export class DbConfig {
-    private static _knex: Knex = Knex({
+    public static knex: Knex = Knex({
         client: 'mssql',
-        connection: parseConnectionString(
-            process.env.SQLAZURECONNSTR_defaultConnection),
+        connection: parseConnectionString(process.env.SQLAZURECONNSTR_defaultConnection),
     });
 
-    private static _bookshelf: Bookshelf = Bookshelf(DbConfig._knex);
-
-    public static bookshelf(): Bookshelf {
-        DbConfig._bookshelf.plugin('registry');
-        return DbConfig._bookshelf;
-    }
+    public static bookshelf: Bookshelf = Bookshelf(DbConfig.knex);
 
     public static destroy() {
-        return DbConfig._knex.destroy();
+        return DbConfig.knex.destroy();
     }
 }
 
-export default DbConfig
+export default DbConfig;

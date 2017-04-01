@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const debug = require("debug");
 const express_1 = require("express");
 const ParkingDb_1 = require("../database/ParkingDb");
+const log = debug('app');
 class ParkingRouter {
     constructor() {
         this.router = express_1.Router();
@@ -13,10 +15,10 @@ class ParkingRouter {
     getCurrentParkingState(req, res, next) {
         ParkingDb_1.default
             .fetchAll()
-            .then(function (contacts) {
+            .then((contacts) => {
             res.json({ contacts });
-        }, function (err) {
-            console.log(err);
+        }, (err) => {
+            log(err);
         });
     }
     init() {
