@@ -1,7 +1,4 @@
-
-
-export class ConnectionStringParser {
-    public parseConnectionString(connectionString) {
+export function parseConnectionString(connectionString) {
         // split connection string to key=value pairs
         var result = {};
         connectionString.split(';').forEach(function (x) {
@@ -44,6 +41,5 @@ export class ConnectionStringParser {
             },
         };
     }
-}
 
-export default ConnectionStringParser;
+export default parseConnectionString;
