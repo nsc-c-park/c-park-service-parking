@@ -8,7 +8,7 @@ const DbConfig_1 = require("../../../config/DbConfig");
 const ParkingDb_1 = require("../../../database/ParkingDb");
 const log = debug('app');
 const PARKING_URL = 'http://parking.descont.pl/parking.xml';
-function getParkingInfo(url) {
+function getParkingInfoAsync(url) {
     return new Promise((resolve, reject) => {
         request(url, (err, res, body) => {
             if (err) {
@@ -26,7 +26,7 @@ function getParkingInfo(url) {
         });
     });
 }
-function parseParkingInfo(xml) {
+function parseParkingInfoAsync(xml) {
     return new Promise((resolve, reject) => {
         xml2js_1.parseString(xml, (err, result) => {
             if (err) {
@@ -43,7 +43,7 @@ function parseParkingInfo(xml) {
         });
     });
 }
-function saveParkingInfo(info) {
+function saveParkingInfoAsync(info) {
     log('Saving parking info');
     return new ParkingDb_1.default(info).save();
 }
@@ -58,9 +58,9 @@ function parkingInfoSaved(entity) {
 function dbConfigDestroyed() {
     log('Db config destroyed');
 }
-getParkingInfo(PARKING_URL)
-    .then(parseParkingInfo)
-    .then(saveParkingInfo)
+getParkingInfoAsync(PARKING_URL)
+    .then(parseParkingInfoAsync)
+    .then(saveParkingInfoAsync)
     .then(parkingInfoSaved)
     .catch(logErr)
     .finally(dbConfigDestroyed);

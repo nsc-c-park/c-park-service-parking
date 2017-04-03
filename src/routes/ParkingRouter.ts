@@ -16,12 +16,13 @@ export class ParkingRouter {
      * GET current state of parking
      */
     public getCurrentParkingState(req: Request, res: Response, next: NextFunction) {
-        ParkingDb
-            .fetchAll()
-            .then((contacts) => {
-                res.json({ contacts });
-            }, (err) => {
-                log(err);
+        const parkingDb = new ParkingDb();
+        parkingDb.getLastParkingIdAsync()
+            .then(parkingDb.getParkingForIdAsync)
+            .then((parking) => {
+                res.json({ parking });
+            }).catch((err) => {
+                res.send(err);
             });
     }
 
@@ -31,7 +32,7 @@ export class ParkingRouter {
 
 }
 
-const ParkingRoutes = new ParkingRouter();
-ParkingRoutes.init();
+const parkingRoute = new ParkingRouter();
+parkingRoute.init();
 
-export default ParkingRoutes.router;
+export default parkingRoute.router;
