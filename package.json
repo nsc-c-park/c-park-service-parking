@@ -2,9 +2,9 @@
   "name": "c-park-service-parking",
   "version": "1.0.0",
   "description": "Microservice for domain 'parking'",
-  "main": "app_data/www.js",
+  "main": "dist/www.js",
   "scripts": {
-    "start": "node app_data/www.js",
+    "start": "node dist/www.js",
     "postinstall": "node node_modules/gulp/bin/gulp.js scripts",
     "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts"
   },

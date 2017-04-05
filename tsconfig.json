@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "es6",
         "module": "commonjs",
-        "outDir": "app_data"
+        "outDir": "dist"
     },
     "include": [
         "src/**/*.ts"

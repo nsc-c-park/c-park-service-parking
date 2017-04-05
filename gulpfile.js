@@ -6,9 +6,9 @@ const tsc = ts.createProject('tsconfig.json');
 
 gulp.task('scripts', () => {
     return tsc.src()
-        .pipe(cleanup({ dest: 'app_data', ext: '.js' }))
+        .pipe(cleanup({ dest: 'dist', ext: '.js' }))
         .pipe(tsc())
-        .pipe(gulp.dest('app_data'));
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('watch', ['scripts'], () => {
