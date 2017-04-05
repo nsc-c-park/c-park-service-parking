@@ -2,10 +2,10 @@
   "name": "c-park-service-parking",
   "version": "1.0.0",
   "description": "Microservice for domain 'parking'",
-  "main": "dist/www.js",
+  "main": "dist/www",
   "scripts": {
-    "start": "node dist/www.js",
-    "postinstall": "node node_modules/gulp/bin/gulp.js scripts",
+    "start": "node dist/www",
+    "postinstall": "tsc",
     "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts"
   },
   "repository": {
