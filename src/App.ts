@@ -4,6 +4,7 @@ import * as logger from 'morgan';
 import * as path from 'path';
 
 import ParkingRouter from './routes/ParkingRouter';
+import WidgetRouter from './routes/WidgetRouter';
 
 class App {
     public express: express.Application;
@@ -22,6 +23,7 @@ class App {
 
     private routes(): void {
         this.express.use('/api/v1/parking', ParkingRouter);
+        this.express.use('/widget', WidgetRouter);
     }
 }
 

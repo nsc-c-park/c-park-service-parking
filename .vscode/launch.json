@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceRoot}\\app_data\\www.js",
+            "program": "${workspaceRoot}\\dist\\www.js",
             "runtimeArgs": [
                 "--debug=5858"
             ],
