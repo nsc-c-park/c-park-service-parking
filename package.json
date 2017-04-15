@@ -4,7 +4,7 @@
   "description": "Microservice for domain 'parking'",
   "main": "dist/www",
   "scripts": {
-    "start": "node dist/www",
+    "start": "node ./dist/www",
     "postinstall": "tsc",
     "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts"
   },
@@ -49,6 +49,7 @@
     "knex": "^0.12.9",
     "morgan": "^1.8.1",
     "mssql": "^3.3.0",
+    "mssql-connection-string": "0.0.4",
     "request": "^2.81.0",
     "ts-node": "^3.0.2",
     "typescript": "^2.2.2",

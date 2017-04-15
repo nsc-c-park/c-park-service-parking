@@ -1,11 +1,11 @@
 import * as Bookshelf from 'bookshelf';
 import * as Knex from 'knex';
-import parseConnectionString from '../util/parseConnectionString';
+import * as connectionStringParser from 'mssql-connection-string';
 
 export class DbConfig {
     public static knex: Knex = Knex({
         client: 'mssql',
-        connection: parseConnectionString(process.env.SQLAZURECONNSTR_defaultConnection),
+        connection: connectionStringParser(process.env.SQLAZURECONNSTR_defaultConnection),
     });
 
     public static bookshelf: Bookshelf = Bookshelf(DbConfig.knex);
