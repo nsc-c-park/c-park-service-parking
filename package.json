@@ -4,7 +4,7 @@
   "description": "Microservice for domain 'parking'",
   "main": "dist/www",
   "scripts": {
-    "prestart": "tsc",
+    "postinstall": "./node_modules/.bin/tsc",
     "start": "node ./dist/www",
     "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts"
   },
@@ -23,8 +23,6 @@
     "@types/chai": "^3.4.35",
     "@types/chai-http": "0.0.30",
     "@types/mocha": "^2.2.40",
-    "@types/request": "0.0.42",
-    "@types/xml2js": "0.0.33",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "mocha": "^3.2.0"
@@ -38,6 +36,8 @@
     "@types/morgan": "^1.7.32",
     "@types/mssql": "^3.3.1",
     "@types/node": "^7.0.12",
+    "@types/request": "0.0.42",
+    "@types/xml2js": "0.0.33",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "bookshelf": "^0.10.3",
@@ -50,9 +50,11 @@
     "morgan": "^1.8.1",
     "mssql": "^3.3.0",
     "mssql-connection-string": "0.0.4",
+    "path": "^0.12.7",
     "request": "^2.81.0",
     "ts-node": "^3.0.2",
     "typescript": "^2.2.2",
+    "typings": "^2.1.1",
     "xml2js": "^0.4.17"
   }
 }
