@@ -4,8 +4,8 @@
   "description": "Microservice for domain 'parking'",
   "main": "dist/www",
   "scripts": {
+    "prestart": "tsc",
     "start": "node ./dist/www",
-    "postinstall": "tsc",
     "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts"
   },
   "repository": {
