@@ -6,7 +6,9 @@
   "scripts": {
     "postinstall": "./node_modules/.bin/tsc",
     "start": "node ./main",
-    "test": "mocha --reporter spec --compilers ts:ts-node/register test/**/*.test.ts"
+    "test": "mocha --reporter spec --compilers ts:ts-node/register test/*.test.ts",
+    "coverage": "node node_modules/.bin/istanbul cover _mocha -- --reporter spec",
+    "coveralls": "cat coverage/lcov.info | node node_modules/.bin/coveralls"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,10 @@
     "@types/mocha": "^2.2.40",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
-    "mocha": "^3.2.0"
+    "coveralls": "^2.13.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "tslint": "^5.1.0"
   },
   "dependencies": {
     "@types/body-parser": "^1.16.2",
