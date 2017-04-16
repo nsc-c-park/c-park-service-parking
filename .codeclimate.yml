@@ -2,6 +2,8 @@ engines:
   tslint:
     enabled: true
     channel: beta
+  eslint:
+    enabled: true
 
 ratings:
    paths:
