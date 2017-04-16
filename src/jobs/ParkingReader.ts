@@ -2,8 +2,8 @@ import * as Promise from 'bluebird';
 import * as debug from 'debug';
 import * as request from 'request';
 import { parseString } from 'xml2js';
-import DbConfig from '../../../config/DbConfig';
-import ParkingDb from '../../../database/ParkingDb';
+import DbConfig from '../config/DbConfig';
+import ParkingDb from '../database/ParkingDb';
 
 const log = debug('app');
 
