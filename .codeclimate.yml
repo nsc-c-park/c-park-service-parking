@@ -1,7 +1,3 @@
-engines: 
-  tslint:
-    enabled: true
-    
 ratings:
    paths:
    - "**.js"
