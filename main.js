@@ -1,1 +1,1 @@
-const www = require("./dist/www");
+require('./dist/www');

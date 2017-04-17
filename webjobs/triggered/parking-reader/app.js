@@ -1,1 +1,1 @@
-const ParkingReader = require("../../../../dist/jobs/ParkingReader");
+require('../../../../dist/jobs/ParkingReader');
